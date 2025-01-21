@@ -1,0 +1,74 @@
+*{ /*resetando as margens e paddings*/
+    padding: 0;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+h1{/*titulo do jogo*/
+    text-align: center;
+    font-size: 2em;
+    margin: 10px 0;
+}
+
+.game-board{/*tabuleiro do jogo*/
+    width: 80%;
+    height: 500px;
+    border: 2px solid black;
+    margin: 0 auto;
+    position: relative;/*para que os elementos filhos possam ser posicionados de forma absoluta*/
+    overflow: hidden;/*para que os elementos filhos que ultrapassarem o tamanho do tabuleiro sejam ocultados*/
+
+}
+
+.pipe{
+    position: absolute;/*para que possa ser posicionado de forma absoluta*/
+    bottom: 0;
+    width: 80px;
+    right: -80px;/*posição inicial do elemento*/
+    animation: pipe-animation 2s infinite linear;/* chamando a animação pipe-animation */
+}
+
+.mario{
+    width: 150px;
+    position: absolute;/*para que possa ser posicionado de forma absoluta*/
+    bottom: 0;
+    
+}
+
+.jump{
+    animation:jump 500ms ease-out;/*chamando a animação jump*/
+    /*ease-out:a animação começa devagar e vai acelerando*/
+}
+
+
+/*Explicação: a animação mario faz com que o elemento suba e desça, simulando um pulo.*/
+@keyframes jump{
+    0%{
+        bottom: 0;
+    }
+    40%{
+        bottom: 180px;
+    }
+
+    50%{
+        bottom: 180px;
+    }
+    60%{
+        bottom: 180px;
+    }
+
+    100%{
+        bottom: 0;
+    }
+}
+
+/*Explicação: a animação movePipe faz com que o elemento se mova da direita para a esquerda, saindo da tela.*/  
+@keyframes pipe-animation{
+    from{
+        right: -80px;/*posição inicial do elemento*/
+    }
+
+    to{
+        right: 100%;/*posição final do elemento*/
+    }
+}
